@@ -1,0 +1,7 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const core_1 = require("@aws-cdk/core");
+const lib_1 = require("../lib");
+const app = new core_1.App();
+new lib_1.PrizePoolTwitchAppStack(app, 'PrizePoolTwitchAppStack');
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoicHJpemUtcG9vbC10d2l0Y2gtYXBwLmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsicHJpemUtcG9vbC10d2l0Y2gtYXBwLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7O0FBQUEsd0NBQW9DO0FBRXBDLGdDQUFpRDtBQUVqRCxNQUFNLEdBQUcsR0FBRyxJQUFJLFVBQUcsRUFBRSxDQUFDO0FBQ3RCLElBQUksNkJBQXVCLENBQUMsR0FBRyxFQUFFLHlCQUF5QixDQUFDLENBQUMiLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgeyBBcHAgfSBmcm9tICdAYXdzLWNkay9jb3JlJztcblxuaW1wb3J0IHsgUHJpemVQb29sVHdpdGNoQXBwU3RhY2sgfSBmcm9tICcuLi9saWInO1xuXG5jb25zdCBhcHAgPSBuZXcgQXBwKCk7XG5uZXcgUHJpemVQb29sVHdpdGNoQXBwU3RhY2soYXBwLCAnUHJpemVQb29sVHdpdGNoQXBwU3RhY2snKTsiXX0=

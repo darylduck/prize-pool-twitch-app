@@ -1,0 +1,24 @@
+{
+  "name": "lambda",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/aws-sdk": "^2.7.0",
+    "@types/node": "^15.12.1",
+    "ts-node": "^10.0.0",
+    "typescript": "^4.3.2"
+  },
+  "dependencies": {
+    "aws-sdk": "^2.922.0",
+    "axios": "^0.21.1",
+    "crypto": "^1.0.1",
+    "graphql": "^15.5.0",
+    "graphql-tag": "^2.12.4"
+  }
+}
