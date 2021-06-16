@@ -16,6 +16,9 @@ on:
 jobs:
   # This workflow contains a single job called "build"
   build:
+    environment:
+      name: Production
+
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
@@ -31,16 +34,6 @@ jobs:
           npm install
           npm run build
 
-  deploy:
-    needs: build
-    
-    environment:
-      name: Production
-
-    # The type of runner that the job will run on
-    runs-on: ubuntu-latest
-
-    steps:
       # Configure AWS Credentials based on environment variables 
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
@@ -51,6 +44,7 @@ jobs:
 
       # Runs a set of commands using the runners shell
       - name: Deploy Infrastructure to AWS
+        working-directory: .
         env:
              CDK_DEFAULT_ACCOUNT: ${{ secrets.CDK_DEFAULT_ACCOUNT }}
              CDK_DEFAULT_REGION: ${{ secrets.CDK_DEFAULT_REGION }}
