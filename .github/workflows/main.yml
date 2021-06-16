@@ -37,7 +37,6 @@ jobs:
         run: |
           npm install
           npm run build
-          npm run deploy:cd
   deploy:
     needs: build
     
@@ -62,7 +61,4 @@ jobs:
         env:
              CDK_DEFAULT_ACCOUNT: ${{ secrets.CDK_DEFAULT_ACCOUNT }}
              CDK_DEFAULT_REGION: ${{ secrets.CDK_DEFAULT_REGION }}
-        run: |
-          npm install
-          npm run build
-          npm run deploy:cd
+        run: npm run deploy:cd
