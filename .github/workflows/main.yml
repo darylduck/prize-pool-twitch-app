@@ -27,9 +27,13 @@ jobs:
       # Runs a single command using the runners shell
       - name: Build lambda source
         working-directory: src/lambda
-        run: npm run build
+        run: |
+          npm install
+          npm run build
 
       # Runs a set of commands using the runners shell
       - name: Build CDK code
         working-directory: .
-        run: npm run build
+        run: |
+          npm install
+          npm run build
