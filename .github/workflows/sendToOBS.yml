@@ -15,30 +15,14 @@ jobs:
   # This workflow contains a single job called "build"
   send-success-to-obs:
     runs-on: ubuntu-latest
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     environment:
       name: Production
 
     # Steps represent a sequence of tasks that will be executed as part of th job
     steps:
-      - name: Invoke success message to status handler api        
+      - name: Invoke message to status handler api        
         uses: distributhor/workflow-webhook@v2
         env:
           webhook_url: ${{ secrets.WEBHOOK_URL }}
           webhook_secret: ${{ secrets.WEBHOOK_SECRET }}
-          data: '{ "succeeded": true }'
-          
-  send-failure-to-obs:
-    runs-on: ubuntu-latest
-    if: ${{ github.event.workflow_run.conclusion == 'failure' }}
-    environment:
-      name: Production
-
-    # Steps represent a sequence of tasks that will be executed as part of th job
-    steps:
-      - name: Invoke success message to status handler api        
-        uses: distributhor/workflow-webhook@v2
-        env:
-          webhook_url: ${{ secrets.WEBHOOK_URL }}
-          webhook_secret: ${{ secrets.WEBHOOK_SECRET }}
-          data: '{ "succeeded": false }'
+          data: '{ "conclusion": "${{ github.event.workflow_run.conclusion }}" }'
