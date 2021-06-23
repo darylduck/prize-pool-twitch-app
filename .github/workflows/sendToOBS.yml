@@ -1,26 +1,29 @@
-# This is a basic workflow to help you get started with Actions
+name: Send Workflow Run Result
 
-name: Send Result To OBS
-
-# Controls when the action will run. 
+# Determines after which workflows this workflow will execute.
 on:
   workflow_run:
-    workflows: ["CD"]
-    branches: [master]
+    workflows: 
+      - CD
     types: 
       - completed
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
-  send-success-to-obs:
+  # This job will perform a HTTP POST to any endpoint
+  # you set up your web hook
+  send-webhook-notification:
     runs-on: ubuntu-latest
+
+    # (OPTIONAL) Include the environment below if you are
+    # setting up your secrets against an environment
     environment:
       name: Production
 
-    # Steps represent a sequence of tasks that will be executed as part of th job
+    # Using a custom action built by github user (distributhor).
+    # See https://github.com/marketplace/actions/workflow-webhook-action 
+    # for more details
     steps:
-      - name: Invoke message to status handler api        
+      - name: Send Action Run Result to Webhook        
         uses: distributhor/workflow-webhook@v2
         env:
           webhook_url: ${{ secrets.WEBHOOK_URL }}
