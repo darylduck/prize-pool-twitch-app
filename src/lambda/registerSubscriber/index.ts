@@ -11,7 +11,7 @@ export const handler = async (event: any, context: any) => {
     const verificationStatus = 'webhook_callback_verification';
     
     if (!body.challenge && twitchMessageType === verificationStatus) {
-        context.fail(SON.stringify({
+        context.fail(JSON.stringify({
             errorMessage:'Could not locate challenge value in your payload'
         }));
     }
