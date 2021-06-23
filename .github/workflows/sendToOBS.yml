@@ -6,7 +6,7 @@ name: Send Result To OBS
 on:
   workflow_run:
     workflows: ["CD"]
-    branches: [main]
+    branches: [master]
     types: 
       - completed
 
