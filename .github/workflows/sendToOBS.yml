@@ -23,8 +23,16 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of th job
     steps:
       - name: Invoke success message to status handler api
+        if: ${{ github.event.workflow_run.conclusion == 'success' }}
         uses: distributhor/workflow-webhook@v2
         env:
           webhook_url: ${{ secrets.WEBHOOK_URL }}
           webhook_secret: ${{ secrets.WEBHOOK_SECRET }}
-          succeeded: ${{ github.event.workflow_run.conclusion == 'success' }}
+          data: '{ succeeded: true }'
+      - name: Invoke failure message to status handler api
+        if: ${{ github.event.workflow_run.conclusion == 'failure' }}
+        uses: distributhor/workflow-webhook@v2
+        env:
+          webhook_url: ${{ secrets.WEBHOOK_URL }}
+          webhook_secret: ${{ secrets.WEBHOOK_SECRET }}
+          data: '{ succeeded: false }'
